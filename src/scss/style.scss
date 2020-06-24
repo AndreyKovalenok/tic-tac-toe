@@ -1,3 +1,234 @@
-h1 {
-  color: green;
+@import "global.scss";
+@import "variables.scss";
+
+body {
+  position: relative;
+}
+
+.tic-tac-toe {
+  padding: 100px 0;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.tic-tac-toe__title {
+  margin-bottom: 50px;
+  text-align: center;
+  color: $font-color;
+}
+
+.statistics {
+  margin-bottom: 30px;
+}
+
+.statistics__score {
+  display: flex;
+  justify-content: space-between;
+  width: 400px;
+  margin: 0 auto 20px;
+}
+
+.statistics__player {
+  width: 45%;
+  transition: 0.3s;
+  border-bottom: 1px solid $border-color;
+  border-radius: 5px;
+
+  &--current {
+    box-shadow: 0 2px 0 0 $active-color;
+  }
+}
+
+.statistics__player-field {
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.statistics__inner {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 10px;
+}
+
+.statistics__img {
+  display: block;
+  width: 20px;
+  height: 20px;
+
+  &--cross {
+    background-image: url("../img/cross.svg");
+  }
+
+  &--circle {
+    background-image: url("../img/circle.svg");
+  }
+}
+
+.statistics__info {
+  text-align: center;
+}
+
+.statistics__status {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -25px;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+  }
+
+  &--cross {
+    &::after {
+      background-image: url("../img/cross.svg");
+    }
+  }
+
+  &--circle {
+    &::after {
+      background-image: url("../img//circle.svg");
+    }
+  }
+}
+
+.game__playground {
+  margin: 0 auto;
+  border-spacing: 6px;
+}
+
+.game {
+  max-width: 800px;
+  margin: 0 auto 50px;
+  padding: 50px 0;
+  border: 5px dashed $active-color;
+  border-radius: 40px;
+}
+
+.game__col {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  padding: 8px;
+  background-color: $active-color;
+
+  &--history {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.circle,
+.cross {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+  top: 8px;
+  display: none;
+
+  &--active {
+    display: block;
+  }
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  display: block;
+  width: 250px;
+  padding: 5px 0;
+  transition: 0.3s;
+  cursor: pointer;
+  outline: none;
+  border-radius: 30px;
+  font-size: 24px;
+}
+
+.restart {
+  border: 2px solid $active-color;
+  background-color: $active-color;
+  color: $white-color;
+
+  &:hover {
+    border-color: rgba($active-color, 0.7);
+    background-color: rgba($active-color, 0.7);
+  }
+}
+
+.history {
+  margin-right: 10px;
+  border: 2px solid $active-color;
+  background-color: transparent;
+  color: $active-color;
+
+  &:hover {
+    border-color: rgba($active-color, 0.7);
+    background-color: rgba($active-color, 0.7);
+    color: $white-color;
+  }
+}
+
+.history-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  height: 80vh;
+  padding: 50px 5%;
+  overflow-y: scroll;
+  transform: translate(calc(-50% - 2000px), -50%);
+  transition: 0.7s ease-in-out;
+  border: 3px dashed $active-color;
+  border-radius: 30px;
+  background-color: rgba($color: $white-color, $alpha: 0.9);
+
+  &--active {
+    transform: translate(-50%, -50%);
+  }
+
+  &::-webkit-scrollbar {width:0px;};
+}
+
+.history-popup__item {
+  width: 20%;
+  margin: 2.5%;
+  text-align: center;
+}
+
+.history-popup__close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 35px;
+  height: 35px;
+  border: none;
+  background-color: transparent;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    cursor: pointer;
+    background-color: $active-color;
+  }
+
+  &::before {
+    transform: rotate(45deg);
+  }
+
+  &::after {
+    transform: rotate(-45deg);
+  }
 }
